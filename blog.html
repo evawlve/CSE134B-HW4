@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Blogs</h1>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        <section class="blog">
+            <h2>Latest Blog Posts</h2>
+            
+            <!-- Blog Post 1 -->
+            <div class="blog-container">
+                <input type="checkbox" id="blog1-toggle" hidden>
+                <label for="blog1-toggle" class="blog-toggle">Understanding Web Development</label>
+                <div class="blog-content">
+                    <h3>Understanding Web Development</h3>
+                    <figure>
+                        <picture>
+                            <!-- WebP format -->
+                            <source srcset="blog-image.webp" type="image/webp">
+                            <!-- Fallback to JPG if WebP is not supported -->
+                            <img src="blog-image.jpg" alt="Illustration of web development">
+                        </picture>
+                    </figure>
+                    <p>Web development is a constantly evolving field that requires continuous learning. In this post, I explore front-end and back-end development.</p>
+                    <p>Modern web development uses HTML, CSS, JavaScript, and frameworks like React to create dynamic applications. Some popular backend technologies include Node.js, Python, and databases.</p>
+                    <a href="#">Read Full Article</a>
+                </div>
+            </div>
+    
+            <!-- Blog Post 2 -->
+            <div class="blog-container">
+                <input type="checkbox" id="blog2-toggle" hidden>
+                <label for="blog2-toggle" class="blog-toggle">The Importance of Responsive Design</label>
+                <div class="blog-content">
+                    <h3>The Importance of Responsive Design</h3>
+                    <figure>
+                        <picture>
+                            <!-- WebP format -->
+                            <source srcset="Responsive_Design.webp" type="image/webp">
+                            <!-- Fallback to PNG -->
+                            <img src="Responsive_Design.png" alt="Illustration of responsive design">
+                        </picture>
+                    </figure>
+                    <p>Responsive design ensures that your website looks great on all devices, from desktops to smartphones. It greatly improves user experience and SEO rankings.</p>
+                    <p>Using CSS media queries and flexible layouts, developers can create adaptive interfaces that fit different screen sizes. Tools like Flexbox and CSS Grid are essential for modern responsive designs.</p>
+                    <a href="#">Read Full Article</a>
+                </div>
+            </div>
+    
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>© 2025 Diego Marquez | <a href="contact.html">Contact</a></p>
+    </footer>
+
+</body>
+</html>

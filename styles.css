@@ -1,0 +1,412 @@
+/* ====== Global Styles ====== */
+:root {
+    --primary-color: #8B4513; /* Brown */
+    --secondary-color: #ffffff; /* White */
+    --accent-color: #DAA520; /* Gold */
+    --text-color: #333;
+    --blended-hover: color-mix(in srgb, var(--primary-color) 70%, var(--accent-color) 30%);
+    --lightened-background: color-mix(in srgb, var(--primary-color) 10%, white 90%);
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ====== Header & Navigation ====== */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* Default Navigation (Desktop) */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Keep link styling */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    background-color: var(--blended-hover); /* Uses blended color */
+    border-radius: 5px;
+}
+
+/* ====== Responsive Hamburger Menu ====== */
+
+/* Hide the checkbox */
+.menu-checkbox {
+    display: none;
+}
+
+/* Hamburger Icon */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    color: white;
+}
+
+/* ====== Mobile Menu Styling Fixes ====== */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+
+    
+    nav ul {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 80px; /* Adjusted from 60px to move down */
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000; /* Forces menu to appear above other elements */
+        
+        /* Adding smooth slide-down animation */
+        opacity: 0;
+        transform: translateY(-10px); 
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* When the menu is checked */
+    .menu-checkbox:checked + .menu-icon + nav ul {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0); 
+    }
+
+    /* Menu item borders  */
+    nav ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Ensure text remains white on hover */
+    nav ul li a {
+        display: block;
+        padding: 12px 20px;
+        color: white !important; 
+        transition: background 0.3s;
+    }
+
+    /* Improve hover visibility */
+    nav ul li a:hover {
+        background-color: var(--accent-color);
+        color: white !important; 
+        border-radius: 5px;
+    }
+}
+
+
+/* ====== Main Layout Using Grid ====== */
+main {
+    display: grid;
+    grid-template-columns: 1fr min(90%, 1200px) 1fr; /* Center content */
+    padding: 2rem 0;
+}
+
+main > * {
+    grid-column: 2; /* Content stays centered */
+}
+
+/* ====== Section Styling ====== */
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: var(--lightened-background);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Projects Section Styling ====== */
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Project Container */
+.project-container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Expandable Button */
+.project-toggle {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.project-toggle:hover {
+    background-color: var(--blended-hover);
+    transform: scale(1.05);
+}
+
+/* Arrow icon inside the toggle button */
+.project-toggle::after {
+    content: " ▼";
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Project content is initially hidden */
+.project-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.3s ease;
+}
+
+/* When checkbox is checked, expand the project content */
+input[type="checkbox"]:checked ~ .project-content {
+    max-height: 1000px; /* Space for the content */
+    opacity: 1;
+    transform: scale(1);
+    padding-top: 1rem;
+}
+
+/* Rotate the arrow upwards when checked */
+input[type="checkbox"]:checked + .project-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Project Image Styling */
+.project-content img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+/* ====== Blog Section Styling ====== */
+.blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Blog Container */
+.blog-container {
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Expandable Bubble Button */
+.blog-toggle {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    width: 100%;
+}
+
+/* Hover effect */
+.blog-toggle:hover {
+    background-color: var(--blended-hover);
+    transform: scale(1.05);
+}
+
+/* Arrow indicator  */
+.blog-toggle::after {
+    content: " ▼";
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Blog content is initially hidden */
+.blog-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.3s ease;
+    text-align: left; 
+    padding-left: 1rem; 
+}
+
+/* When checked, expand the blog content */
+input[type="checkbox"]:checked ~ .blog-content {
+    max-height: 1000px; 
+    opacity: 1;
+    transform: scale(1);
+    padding-top: 1rem;
+}
+
+/* When checked, rotate the arrow upwards */
+input[type="checkbox"]:checked + .blog-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Blog Image Styling */
+.blog-content img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto; 
+}
+
+/* Left-aligned blog titles */
+.blog-content h3 {
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+/* Improves readability */
+.blog-content p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Read full article link */
+.blog-content a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blog-content a:hover {
+    color: var(--accent-color);
+}
+
+/* Blog Image Styling */
+.blog-content figure {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.blog-content picture {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.blog-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    border-radius: 8px;
+}
+
+/* ====== Contact Form Styling ====== */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: color-mix(in srgb, var(--primary-color) 5%, white 95%);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 👇 Lightened border for inputs */
+.contact-form input, 
+.contact-form textarea, 
+.contact-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--primary-color) 30%, #ccc 70%);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* 👇 Smoothed out focus effect */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: color-mix(in srgb, var(--primary-color) 50%, var(--accent-color) 50%);
+    outline: none;
+    box-shadow: 0px 0px 5px color-mix(in srgb, var(--primary-color) 40%, var(--accent-color) 40%);
+}
+
+/* ====== Contact Form Button ====== */
+.contact-form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 👇 Blended hover effect */
+.contact-form button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 70%, var(--accent-color) 30%);
+    transform: scale(1.02);
+}
+
+/* Changes border when input has text */
+.contact-form input:has(:not(:placeholder-shown)),
+.contact-form textarea:has(:not(:placeholder-shown)) {
+    border-color: color-mix(in srgb, var(--primary-color) 50%, var(--accent-color) 50%);
+}
+
+
+/* ====== Footer ====== */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
