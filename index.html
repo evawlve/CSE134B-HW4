@@ -11,12 +11,14 @@
     <meta property="og:image" content="profile.jpg">
     <meta property="og:url" content="https://your-portfolio-link.com">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/scripts/theme.js" defer></script>
 </head>
 <body>
 
     <header>
         <h1>My Portfolio Home Page</h1>
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
         <input type="checkbox" id="menu-toggle" class="menu-checkbox">
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <nav>
@@ -25,7 +27,8 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="form-no-js.html">No JS Contact</a></li>
+                <li><a href="js-contact-form.html">JS Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -38,7 +41,7 @@
     </main>
 
     <footer>
-        <p>© 2025 Diego Marquez | <a href="contact.html">Contact</a></p>
+        <p>© 2025 Diego Marquez | <a href="form-no-js.html">Contact</a></p>
     </footer>
 
 </body>

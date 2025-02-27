@@ -1,0 +1,29 @@
+/* ====== No-JS Form-Specific Styles ====== */
+
+/* Immediate error styling for invalid fields in the No-JS form */
+.contact-form form input:invalid,
+.contact-form form textarea:invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+    outline: none;
+}
+
+/* Hide error messages when input becomes valid */
+.contact-form form input:valid + .error-message,
+.contact-form form textarea:valid + .error-message {
+    opacity: 0;
+}
+
+/* Make valid fields green */
+.contact-form form input:valid,
+.contact-form form textarea:valid {
+    border-color: green;
+}
+
+/* Info message for no-js form (always displayed) */
+.contact-form form .info-message {
+    font-size: 0.9em;
+    color: gray;
+    margin-top: 5px;
+    display: block;
+}

@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Me - My Portfolio">
     <title>Contact</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/form-no-js.css">
+    <script src="/scripts/theme.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Contact Me</h1>
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
         <input type="checkbox" id="menu-toggle" class="menu-checkbox">
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <nav>
@@ -18,7 +22,8 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="form-no-js.html">No JS Contact</a></li>
+                <li><a href="js-contact-form.html">JS Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -28,25 +33,21 @@
         <section class="contact-form">
             <h2>Get in Touch</h2>
             <p>Fill out the form below to contact me!</p>
-            <form action="#" method="post">
+            <form action="https://httpbin.org/post" method="POST">
                 <label for="name"><b>Name:</b></label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                
+                <input type="text" id="name" name="name" required minlength="2" maxlength="50" placeholder="Enter your full name">
+                <output class="error-message" for="name">Name must be at least 2 characters.</output>
+            
                 <label for="email"><b>Email:</b></label>
                 <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                
+                <output class="error-message" for="email">Please enter a valid email address.</output>
+            
                 <label for="message"><b>Message:</b></label>
-                <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-                
-                <label for="contact-method"><b>Preferred Contact Method:</b></label>
-                <select id="contact-method" name="contact-method">
-                    <option value="" disabled selected>Select a contact method</option>
-                    <option value="email">Email</option>
-                    <option value="social">Social Media</option>
-                    <option value="call">Call</option>
-                    <option value="text">Text Message</option>
-                </select>
-                
+                <textarea id="message" name="message" rows="5" required minlength="10" maxlength="500" placeholder="Write your message here..."></textarea>
+                <output class="info-message" for="message">Min 10 / Max 500 characters.</output>
+            
+                <input type="hidden" name="possible_bot" value="true">
+            
                 <button type="submit">Send Message</button>
             </form>
         </section>
@@ -65,7 +66,7 @@
     </main>
     
     <footer>
-        <p>© 2025 Diego Marquez | <a href="contact.html">Contact</a></p>
+        <p>© 2025 Diego Marquez | <a href="form-no-js.html">Contact</a></p>
     </footer>
 </body>
 </html>

@@ -1,12 +1,70 @@
 /* ====== Global Styles ====== */
+/* 
+   Default (Light) Theme 
+   - Remains your existing 'light' scheme 
+*/
 :root {
-    --primary-color: #8B4513; /* Brown */
-    --secondary-color: #ffffff; /* White */
-    --accent-color: #DAA520; /* Gold */
-    --text-color: #333;
+    --primary-color: #8B4513;   /* Brown for header background, etc. */
+    --secondary-color: #ffffff; /* White for body background */
+    --accent-color: #DAA520;    /* Gold for hover, highlights */
+    --text-color: #333;         /* Dark text */
     --blended-hover: color-mix(in srgb, var(--primary-color) 70%, var(--accent-color) 30%);
     --lightened-background: color-mix(in srgb, var(--primary-color) 10%, white 90%);
 }
+
+/* 
+   Dark Theme Overrides 
+   - Applies whenever [data-theme="dark"] is on <body> or <html> 
+*/
+[data-theme="dark"] {
+    --primary-color: #000000;   /* Header & nav background */
+    --secondary-color: #1a1a1a; /* Body background */
+    --accent-color: #f1c40f;    /* A lighter gold/yellow accent if you wish */
+    --text-color: #efefef;      /* Light text against a dark background */
+    /* Recalculate or pick new 'blended-hover' & 'lightened-background' */
+    --blended-hover: color-mix(in srgb, #000000 70%, #f1c40f 30%);
+    --lightened-background: #2a2a2a; ;
+}
+
+[data-theme="dark"] .blog-content h3 {
+    color: var(--accent-color);
+}
+
+/* 1) Force links in blog, projects, and footer to accent color */
+[data-theme="dark"] .blog-content a,
+[data-theme="dark"] .projects a,
+[data-theme="dark"] footer a {
+  color: var(--accent-color) !important;
+}
+
+/* 2) Darken the contact form background */
+[data-theme="dark"] .contact-form form {
+  background-color: #8a8a8a;
+}
+
+/* 3) Darken the input fields themselves */
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea,
+[data-theme="dark"] .contact-form select {
+  background-color: #2a2a2a;
+  color: var(--text-color); /* which should be #efefef in dark mode */
+  border: 1px solid #555;
+}
+
+/* If you want the label text, buttons, etc. to match the new color scheme: */
+[data-theme="dark"] .contact-form label,
+[data-theme="dark"] .contact-form button {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .contact-details a, 
+[data-theme="dark"] .business-hours a {
+    color: var(--accent-color) !important;
+}
+
+/* 
+   Body uses the current theme's variables 
+*/
 body {
     margin: 0;
     padding: 0;
@@ -25,7 +83,6 @@ header {
     position: relative;
 }
 
-/* Default Navigation (Desktop) */
 nav ul {
     list-style: none;
     padding: 0;
@@ -35,7 +92,6 @@ nav ul {
     flex-wrap: wrap;
 }
 
-/* Keep link styling */
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -44,20 +100,16 @@ nav ul li a {
     transition: 0.3s;
 }
 
-/* Hover effect */
 nav ul li a:hover {
-    background-color: var(--blended-hover); /* Uses blended color */
+    background-color: var(--blended-hover);
     border-radius: 5px;
 }
 
 /* ====== Responsive Hamburger Menu ====== */
-
-/* Hide the checkbox */
 .menu-checkbox {
     display: none;
 }
 
-/* Hamburger Icon */
 .menu-icon {
     display: none;
     font-size: 2rem;
@@ -68,40 +120,35 @@ nav ul li a:hover {
     color: white;
 }
 
-/* ====== Mobile Menu Styling Fixes ====== */
 @media (max-width: 768px) {
     .menu-icon {
-        display: block; /* Show hamburger icon */
+        display: block; 
     }
 
-    
     nav ul {
-        display: none; /* Hidden by default */
+        display: none;
         flex-direction: column;
         background-color: var(--primary-color);
         position: absolute;
-        top: 80px; /* Adjusted from 60px to move down */
+        top: 80px;
         left: 0;
         width: 100%;
         text-align: center;
         padding: 1rem 0;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1000; /* Forces menu to appear above other elements */
+        z-index: 1000;
         
-        /* Adding smooth slide-down animation */
         opacity: 0;
         transform: translateY(-10px); 
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* When the menu is checked */
     .menu-checkbox:checked + .menu-icon + nav ul {
         display: flex;
         opacity: 1;
         transform: translateY(0); 
     }
 
-    /* Menu item borders  */
     nav ul li {
         padding: 10px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -111,7 +158,6 @@ nav ul li a:hover {
         border-bottom: none;
     }
 
-    /* Ensure text remains white on hover */
     nav ul li a {
         display: block;
         padding: 12px 20px;
@@ -119,7 +165,6 @@ nav ul li a:hover {
         transition: background 0.3s;
     }
 
-    /* Improve hover visibility */
     nav ul li a:hover {
         background-color: var(--accent-color);
         color: white !important; 
@@ -127,16 +172,15 @@ nav ul li a:hover {
     }
 }
 
-
 /* ====== Main Layout Using Grid ====== */
 main {
     display: grid;
-    grid-template-columns: 1fr min(90%, 1200px) 1fr; /* Center content */
+    grid-template-columns: 1fr min(90%, 1200px) 1fr; 
     padding: 2rem 0;
 }
 
 main > * {
-    grid-column: 2; /* Content stays centered */
+    grid-column: 2;
 }
 
 /* ====== Section Styling ====== */
@@ -156,14 +200,12 @@ section {
     gap: 1.5rem;
 }
 
-/* Project Container */
 .project-container {
     width: 80%;
     max-width: 600px;
     text-align: center;
 }
 
-/* Expandable Button */
 .project-toggle {
     display: inline-block;
     background-color: var(--primary-color);
@@ -175,20 +217,17 @@ section {
     transition: all 0.3s ease-in-out;
 }
 
-/* Hover effect */
 .project-toggle:hover {
     background-color: var(--blended-hover);
     transform: scale(1.05);
 }
 
-/* Arrow icon inside the toggle button */
 .project-toggle::after {
     content: " ▼";
     display: inline-block;
     transition: transform 0.3s ease;
 }
 
-/* Project content is initially hidden */
 .project-content {
     max-height: 0;
     overflow: hidden;
@@ -197,20 +236,17 @@ section {
     transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.3s ease;
 }
 
-/* When checkbox is checked, expand the project content */
 input[type="checkbox"]:checked ~ .project-content {
-    max-height: 1000px; /* Space for the content */
+    max-height: 1000px; 
     opacity: 1;
     transform: scale(1);
     padding-top: 1rem;
 }
 
-/* Rotate the arrow upwards when checked */
 input[type="checkbox"]:checked + .project-toggle::after {
     transform: rotate(180deg);
 }
 
-/* Project Image Styling */
 .project-content img {
     width: 100%;
     max-width: 500px;
@@ -225,13 +261,11 @@ input[type="checkbox"]:checked + .project-toggle::after {
     gap: 1.5rem;
 }
 
-/* Blog Container */
 .blog-container {
     width: 80%;
     max-width: 600px;
 }
 
-/* Expandable Bubble Button */
 .blog-toggle {
     display: inline-block;
     background-color: var(--primary-color);
@@ -245,20 +279,17 @@ input[type="checkbox"]:checked + .project-toggle::after {
     width: 100%;
 }
 
-/* Hover effect */
 .blog-toggle:hover {
     background-color: var(--blended-hover);
     transform: scale(1.05);
 }
 
-/* Arrow indicator  */
 .blog-toggle::after {
     content: " ▼";
     display: inline-block;
     transition: transform 0.3s ease;
 }
 
-/* Blog content is initially hidden */
 .blog-content {
     max-height: 0;
     overflow: hidden;
@@ -269,7 +300,6 @@ input[type="checkbox"]:checked + .project-toggle::after {
     padding-left: 1rem; 
 }
 
-/* When checked, expand the blog content */
 input[type="checkbox"]:checked ~ .blog-content {
     max-height: 1000px; 
     opacity: 1;
@@ -277,12 +307,10 @@ input[type="checkbox"]:checked ~ .blog-content {
     padding-top: 1rem;
 }
 
-/* When checked, rotate the arrow upwards */
 input[type="checkbox"]:checked + .blog-toggle::after {
     transform: rotate(180deg);
 }
 
-/* Blog Image Styling */
 .blog-content img {
     width: 100%;
     max-width: 500px;
@@ -291,7 +319,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     margin: 0 auto; 
 }
 
-/* Left-aligned blog titles */
 .blog-content h3 {
     margin-top: 0.5rem;
     color: var(--primary-color);
@@ -299,7 +326,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     text-align: left;
 }
 
-/* Improves readability */
 .blog-content p {
     margin: 0.5rem 0;
     line-height: 1.6;
@@ -307,7 +333,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     text-align: left;
 }
 
-/* Read full article link */
 .blog-content a {
     display: inline-block;
     margin-top: 1rem;
@@ -321,7 +346,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     color: var(--accent-color);
 }
 
-/* Blog Image Styling */
 .blog-content figure {
     display: flex;
     justify-content: center;
@@ -353,7 +377,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 👇 Lightened border for inputs */
 .contact-form input, 
 .contact-form textarea, 
 .contact-form select {
@@ -364,7 +387,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     font-size: 1rem;
 }
 
-/* 👇 Smoothed out focus effect */
 .contact-form input:focus,
 .contact-form textarea:focus,
 .contact-form select:focus {
@@ -373,7 +395,6 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     box-shadow: 0px 0px 5px color-mix(in srgb, var(--primary-color) 40%, var(--accent-color) 40%);
 }
 
-/* ====== Contact Form Button ====== */
 .contact-form button {
     background-color: var(--primary-color);
     color: white;
@@ -385,18 +406,15 @@ input[type="checkbox"]:checked + .blog-toggle::after {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* 👇 Blended hover effect */
 .contact-form button:hover {
     background-color: color-mix(in srgb, var(--primary-color) 70%, var(--accent-color) 30%);
     transform: scale(1.02);
 }
 
-/* Changes border when input has text */
 .contact-form input:has(:not(:placeholder-shown)),
 .contact-form textarea:has(:not(:placeholder-shown)) {
     border-color: color-mix(in srgb, var(--primary-color) 50%, var(--accent-color) 50%);
 }
-
 
 /* ====== Footer ====== */
 footer {
@@ -409,4 +427,22 @@ footer {
     width: 100%;
 }
 
+/* ====== THEME TOGGLE ====== */
+/* Hide if JS is off; display it via JS */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: none; /* We'll show this in JS if JS is enabled */
+    margin-left: 1rem;
+    transition: background-color 0.3s ease;
+}
 
+.theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+}

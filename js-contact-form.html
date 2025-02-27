@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Me - My Portfolio">
+    <title>Contact</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/js-form.css">
+    <script src="/scripts/theme.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1>
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="form-no-js.html">No JS Contact</a></li>
+                <li><a href="js-contact-form.html">JS Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        <section class="contact-form">
+            <h2>Get in Touch</h2>
+            <p>Fill out the form below to contact me!</p>
+            <form action="https://httpbin.org/post" method="POST" id="contact-form-js" novalidate>
+                <label for="name"><b>Name:</b></label>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="50" pattern="^[A-Za-z\s]+$" placeholder="Enter your full name">
+                <output class="js-error-message" for="name"></output>
+            
+                <label for="email"><b>Email:</b></label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                <output class="js-error-message" for="email"></output>
+            
+                <label for="message"><b>Message:</b></label>
+                <textarea id="message" name="message" rows="5" required minlength="10" maxlength="500" placeholder="Write your message here..."></textarea>
+                <output class="js-info-message" for="message">Min 10 / Max 500 characters.</output>
+            
+                <input type="hidden" name="possible_bot" value="true">
+                <input type="hidden" name="form-errors" id="form-errors">
+            
+                <button type="submit">Send Message</button>
+            </form>            
+        </section>
+
+        <section class="contact-details">
+            <h2>My Contact Details</h2>
+            <p>Email: <a href="mailto:dimarquez@ucsd.edu">dimarquez@ucsd.edu</a></p>
+            <p>Phone: (530) 537-6564</p>
+            <p>Location: San Diego, CA</p>
+        </section>
+
+        <section class="business-hours">
+            <h2>Business Hours</h2>
+            <p>Monday - Friday: 9AM - 5PM</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Diego Marquez | <a href="form-no-js.html">Contact</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

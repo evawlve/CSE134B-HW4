@@ -1,0 +1,63 @@
+/***********************************************************
+ * JS-Enhanced Form-Specific Styles 
+ * (Avoid conflicts by scoping all rules to #contact-form-js)
+ ***********************************************************/
+
+/* ====== Error Message Styling ====== */
+#contact-form-js .js-error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Info message for character countdown */
+  #contact-form-js .js-info-message {
+    font-size: 0.9em;
+    color: gray;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* ====== Flash Effect Animation for Invalid Character ====== */
+  @keyframes flash {
+    0% { background-color: #ffe6e6; }
+    50% { background-color: white; }
+    100% { background-color: #ffe6e6; }
+  }
+  
+  /* 
+     Prevent fields from turning red 
+     before user interacts with them 
+  */
+  #contact-form-js input:not(:focus):not(:placeholder-shown):invalid,
+  #contact-form-js textarea:not(:focus):not(:placeholder-shown):invalid {
+    border-color: #ccc; /* Neutral color */
+    background-color: white;
+  }
+  
+  /* When user focuses on an invalid field, show red highlight */
+  #contact-form-js input:focus:invalid,
+  #contact-form-js textarea:focus:invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+  }
+  
+  /* Valid fields get a green border */
+  #contact-form-js input:valid,
+  #contact-form-js textarea:valid {
+    border-color: green;
+  }
+  
+  /* 
+     If you want to highlight the 
+     .js-error-message while invalid, 
+     you can do something like:
+  */
+  #contact-form-js input:invalid + .js-error-message,
+  #contact-form-js textarea:invalid + .js-error-message {
+    opacity: 1;
+  }
+  
