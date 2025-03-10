@@ -21,7 +21,6 @@
     --secondary-color: #1a1a1a; /* Body background */
     --accent-color: #f1c40f;    /* A lighter gold/yellow accent if you wish */
     --text-color: #efefef;      /* Light text against a dark background */
-    /* Recalculate or pick new 'blended-hover' & 'lightened-background' */
     --blended-hover: color-mix(in srgb, #000000 70%, #f1c40f 30%);
     --lightened-background: #2a2a2a; ;
 }
@@ -47,11 +46,10 @@
 [data-theme="dark"] .contact-form textarea,
 [data-theme="dark"] .contact-form select {
   background-color: #2a2a2a;
-  color: var(--text-color); /* which should be #efefef in dark mode */
+  color: var(--text-color); 
   border: 1px solid #555;
 }
 
-/* If you want the label text, buttons, etc. to match the new color scheme: */
 [data-theme="dark"] .contact-form label,
 [data-theme="dark"] .contact-form button {
   color: var(--text-color);
@@ -62,9 +60,6 @@
     color: var(--accent-color) !important;
 }
 
-/* 
-   Body uses the current theme's variables 
-*/
 body {
     margin: 0;
     padding: 0;
