@@ -1,7 +1,7 @@
 /* ====== Global Styles ====== */
 /* 
    Default (Light) Theme 
-   - Remains your existing 'light' scheme 
+   - Remains existing 'light' scheme 
 */
 :root {
     --primary-color: #8B4513;   /* Brown for header background, etc. */
@@ -19,7 +19,7 @@
 [data-theme="dark"] {
     --primary-color: #000000;   /* Header & nav background */
     --secondary-color: #1a1a1a; /* Body background */
-    --accent-color: #f1c40f;    /* A lighter gold/yellow accent if you wish */
+    --accent-color: #f1c40f;    /* A lighter gold/yellow accent  */
     --text-color: #efefef;      /* Light text against a dark background */
     --blended-hover: color-mix(in srgb, #000000 70%, #f1c40f 30%);
     --lightened-background: #2a2a2a; ;
@@ -432,7 +432,7 @@ footer {
     font-size: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    display: none; /* We'll show this in JS if JS is enabled */
+    display: none; 
     margin-left: 1rem;
     transition: background-color 0.3s ease;
 }
